@@ -427,9 +427,10 @@ for iPrf=1:size(concentration,2)
             /(AUC_0 + AUC_1 + AUC_2 + AUC_3) - infusionTime/2;
         
         if ~isnan(Dose)
-            PK.CL(iPrf)=Dose./PK.AUC_0inf(iPrf);
+            iDose = min(iPrf,length(Dose));
+            PK.CL(iPrf)=Dose(iDose)./PK.AUC_0inf(iPrf);
             PK.VSS(iPrf)=PK.CL(iPrf).*PK.MRT(iPrf);
-            PK.Vd(iPrf)=Dose./PK.AUC_0inf(iPrf)./lambda;
+            PK.Vd(iPrf)=Dose(iDose)./PK.AUC_0inf(iPrf)./lambda;
         end
 
     end
