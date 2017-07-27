@@ -18,7 +18,7 @@ global MOBI_SETTINGS;
 if ~isdeployed && ~isunix
     filename =mfilename('fullpath');
     fpath=fileparts(filename);
-    libpath=[fpath filesep '..' filesep 'lib' filesep];
+    libpath=[fpath filesep '..' filesep '..' filesep 'lib' filesep];
     addpath(genpath(libpath));
     
     systemPath = getenv('path');
