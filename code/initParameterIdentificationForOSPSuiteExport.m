@@ -1,18 +1,18 @@
-function PI=initParameterIdentificationForOSPSuiteExport(PI_xml,simulationList)
-% INITPARAMETERIDENTIFICATIONFOROSPSUITEEXPORT initialize the exported parameter identification
+function PI=initParameterIdentificationForSBSuiteExport(PI_xml,simulationList)
+% INITPARAMETERIDENTIFICATIONFORSBSUITEEXPORT initialize the exported parameter identification
 % 
-% this function uses as input the xmls exported from the OSPSuite. It
+% this function uses as input the xmls exported from the SBSuite. It
 % generates a structure PI which is used to solve the problem and
 % initializes all simulations.
 %
-% PI=initParameterIdentificationForOSPSuiteExport(PI_xml,simulationList)
+% PI=initParameterIdentificationForSBSuiteExport(PI_xml,simulationList)
 %
 %  PI (structure) 
 %    .par (sturcture) settings for parameter
 %    .output (structure) settings for simulation outputs and corresponding observed data
 %    .configuration (structure) settings for configuration settings
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% author: Bayer AG;  support@systems-biology.com
 % Date: 10-Mai-2016
 
 % read xml file
@@ -60,7 +60,7 @@ end
 PI.configuration=PI_struct.ParameterIdentification.Configuration;
 
 % do a first evaluation set rowindices
-[resid,PI]=getPIWeightedResidualsForOSPSuiteExport([PI.par.startValue],PI);
+[resid,PI]=getPIWeightedResidualsForSBSuiteExport([PI.par.startValue],PI);
 if isnan(resid)
     error('it is not possible to run parameter identification with start values');
 end
@@ -82,7 +82,8 @@ end
 % get corresponding simulation
 output.path_id=output.Output.path;
 tmp=regexp(output.path_id,'\|','split');
-output.simIndex=find(ismember(strrep(simulationList,'.xml',''),tmp{1}));
+[~,simulationNames,~]=cellfun(@fileparts,simulationList,'UniformOutput',false);
+output.simIndex=find(ismember(simulationNames,tmp{1}));
 
 % initialize rowindices for fast processing
 output.rowIndex=nan;
@@ -137,10 +138,11 @@ par=rmfield(par,'SimulationParameterList');
 par.path_id=strrep(par.path_id,'&lt;-&gt;','<->');
 
 % prepare new fields
+[~,simulationNames,~]=cellfun(@fileparts,simulationList,'UniformOutput',false);
 for iPt=1:length(par.path_id)
     % get corresponding simulation
     tmp=regexp(par.path_id{iPt},'\|','split');
-    par.simIndex(iPt)=find(ismember(strrep(simulationList,'.xml',''),tmp{1}));
+    par.simIndex(iPt)=find(ismember(simulationNames, tmp{1}));
         
     % initialize rowindices for fast processing
     par.rowIndex(iPt)=nan;

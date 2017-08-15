@@ -222,6 +222,8 @@ for iTab=[2 4]
     % column indices
     iCol_isV=find(strcmp('IsVariable',{TableArray(iTab).Variables.Name}));
     iCol_isP=find(strcmp('ParameterType',{TableArray(iTab).Variables.Name}));
+    jCol_SA = strcmp('CalculateSensitivity',{TableArray(iTab).Variables.Name});
+
     if isempty(iCol_isP) % Old version of DCI Component and Species Initial values
         iCol_isF=find(strcmp('IsFormula',{TableArray(iTab).Variables.Name}));
     else
@@ -254,6 +256,10 @@ for iTab=[2 4]
             nIsFormula=sum(strcmp(TableArray(iTab).Variables(iCol_isP).Values(:),'Formula').*(TableArray(iTab).Variables(iCol_isV).Values(:)==1));
             nIsTable=sum(strcmp(TableArray(iTab).Variables(iCol_isP).Values(:),'Table').*(TableArray(iTab).Variables(iCol_isV).Values(:)==1));
             disp(sprintf('Number of %s: %d, with formulas: %d, table parameters: %d',TableArray(iTab).Name,nAll,nIsFormula,nIsTable));
+        end
+        if any(jCol_SA)
+            nSA = sum(TableArray(iTab).Variables(jCol_SA).Values(:).*TableArray(iTab).Variables(iCol_isV).Values(:));
+            disp(sprintf('parameters for sensitivity calcualtion: %d',nSA));
         end
     elseif strcmp(report,'long')
          nAll=sum(TableArray(iTab).Variables(iCol_isV).Values(:));
@@ -354,7 +360,9 @@ end
 %(the function findTableIndex works with DCI_INFO)
 DCI_INFO{end}.InputTab(iTab)= TableArray;
 
+% get column index
 iCol_F=find(strcmp('Formula',{TableArray.Variables.Name}));
+jCol_SA = strcmp('CalculateSensitivity',{TableArray.Variables.Name});
 simulationIndex=length(DCI_INFO);
 
 for iP=1:length(tmpStruct)
@@ -367,11 +375,14 @@ for iP=1:length(tmpStruct)
                     tmpStruct(iP).path_id,XML);
     end
     
+    % set to variable 
+    TableArray.Variables(iCol_isV).Values(rowIndex) = 1;
+    
+    % check if formula parameters may be set to variable
     switch tmpStruct(iP).initializeIfFormula
         case 'always'
-            TableArray.Variables(iCol_isV).Values(rowIndex) = 1;
+            % nothing to do 
         case 'withWarning'
-            TableArray.Variables(iCol_isV).Values(rowIndex) = 1;
             if ~isempty(iCol_isF)
                 ji_Formula=find(TableArray.Variables(iCol_isF).Values(rowIndex));
             else
@@ -391,7 +402,6 @@ for iP=1:length(tmpStruct)
             else
                 jj_Formula=strcmp(TableArray.Variables(iCol_isP).Values(rowIndex),'Formula');
             end 
-            TableArray.Variables(iCol_isV).Values(rowIndex(~jj_Formula)) = 1;
             
             for iF=find(jj_Formula)'
                 error('MoBiToolbox:Basis:FormulaParameterInitialization',errortxt,...
@@ -399,7 +409,13 @@ for iP=1:length(tmpStruct)
                     TableArray.Variables(2).Values{rowIndex(iF)},...
                     TableArray.Variables(iCol_F).Values{rowIndex(iF)});
             end
-
+        otherwise
+            error('unknown flag');
+    end
+    
+    % set calculateSensitivity flag
+    if any(jCol_SA) && tmpStruct(iP).calculateSensitivity    
+        TableArray.Variables(jCol_SA).Values(rowIndex) = 1;
     end
 end
 
