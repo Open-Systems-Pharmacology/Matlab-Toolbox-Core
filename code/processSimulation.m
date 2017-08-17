@@ -86,19 +86,29 @@ for simulationIndex_i=simulationIndex
                 end
                 
                 % get Output
-                DCI_INFO{simulationIndex_i}.OutputTab(1) = feval(MOBI_SETTINGS.MatlabInterface,...
-                    'GetOutputTable',DCI_INFO{simulationIndex_i}.Handle,1);
-                DCI_INFO{simulationIndex_i}.OutputTab(2) = feval(MOBI_SETTINGS.MatlabInterface,...
-                    'GetOutputTable',DCI_INFO{simulationIndex_i}.Handle,2);
+                for iO = 1:3
+                    DCI_INFO{simulationIndex_i}.OutputTab(iO) = feval(MOBI_SETTINGS.MatlabInterface,...
+                        'GetOutputTable',DCI_INFO{simulationIndex_i}.Handle,iO);
+                end
                 
-                % add rowindex ID Array for fast processing
+                % add rowindex ID Array for fast processing for simulation
+                % results
                if ~isfield(DCI_INFO{simulationIndex_i},'OutputTabID')
                    for iCol=1:length(DCI_INFO{simulationIndex}.OutputTab(2).Variables)
                        DCI_INFO{simulationIndex_i}.OutputTabID(iCol)=...
                            str2double(DCI_INFO{simulationIndex}.OutputTab(2).Variables(iCol).Attributes(1).Value);
                    end
                end
-                   
+
+               % add rowindex ID Array for fast processing for sensitivity
+               if ~isfield(DCI_INFO{simulationIndex_i},'SensitivityTabID')
+                   for iCol=1:length(DCI_INFO{simulationIndex}.OutputTab(3).Variables)
+                       DCI_INFO{simulationIndex_i}.SensitivityTabID(iCol,:) = ...
+                           [str2double(DCI_INFO{simulationIndex}.OutputTab(3).Variables(iCol).Attributes(1).Value),...
+                           str2double(DCI_INFO{simulationIndex}.OutputTab(3).Variables(iCol).Attributes(5).Value)];
+                   end
+               end
+
             catch exception
                 success=false;
                 warning('Problem while getting In-/OutputTables!');

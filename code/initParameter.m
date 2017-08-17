@@ -28,6 +28,12 @@ function initStruct=initParameter(initStruct, path_id, initializeIfFormula,varar
 %           false:  If a parameter should be  initialized, which does not
 %           exist in the simulation, no warning is thrown, the parameter will be skipped quietly.
 %
+%   initStruct=INITPARAMETER(initStruct, path_id,initializeIfFormula,...
+%           'calculateSensitivity',value_calculateSensitivity)
+%       value_calculateSensitivity (boolean): 
+%           true: sensitivities vs this parameter are caclulated and added to the output.
+%           false: (default)  sensitivities vs this parameter are not caclulated.
+%
 %   see also INITSIMULATION, INITSPECIESINITIALVALUE
  
 % Open Systems Pharmacology Suite;  support@systems-biology.com
@@ -59,20 +65,22 @@ if ~any(jj)
 end
 
 % Check input options
-[throwWarningIfNotExisting] = ...
+[throwWarningIfNotExisting,calculateSensitivity] = ...
     checkInputOptions(varargin,{...
     'throwWarningIfNotExisting',[true false],true...
+    'calculateSensitivity',[true false],false...
     });
 
 %% set structure
 if isempty(initStruct)
-    tmp=struct('path_id',[],'initializeIfFormula',[]);
-    initStruct.Parameters=tmp([]);    
-    initStruct.InitialValues=tmp([]);
+    tmp = struct('path_id',[],'initializeIfFormula',[]);
+    initStruct.Parameters = tmp([]);    
+    initStruct.InitialValues = tmp([]);
 end
 
-initStruct.Parameters(end+1).path_id=path_id;
-initStruct.Parameters(end).initializeIfFormula=initializeIfFormula;
-initStruct.Parameters(end).throwWarningIfNotExisting=throwWarningIfNotExisting;
+initStruct.Parameters(end+1).path_id = path_id;
+initStruct.Parameters(end).initializeIfFormula = initializeIfFormula;
+initStruct.Parameters(end).throwWarningIfNotExisting = throwWarningIfNotExisting;
+initStruct.Parameters(end).calculateSensitivity = calculateSensitivity;
 
 return
