@@ -12,8 +12,7 @@ function PI=initParameterIdentificationForOSPSuiteExport(PI_xml,simulationList)
 %    .output (structure) settings for simulation outputs and corresponding observed data
 %    .configuration (structure) settings for configuration settings
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
-% Date: 10-Mai-2016
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.com
 
 % read xml file
 PI_struct=readXMLStructure(PI_xml);
@@ -82,8 +81,7 @@ end
 % get corresponding simulation
 output.path_id=output.Output.path;
 tmp=regexp(output.path_id,'\|','split');
-[~,simulationNames,~]=cellfun(@fileparts,simulationList,'UniformOutput',false);
-output.simIndex=find(ismember(simulationNames,tmp{1}));   
+output.simIndex=find(ismember(strrep(simulationList,'.xml',''),tmp{1}));
 
 % initialize rowindices for fast processing
 output.rowIndex=nan;
@@ -138,12 +136,11 @@ par=rmfield(par,'SimulationParameterList');
 par.path_id=strrep(par.path_id,'&lt;-&gt;','<->');
 
 % prepare new fields
-[~,simulationNames,~]=cellfun(@fileparts,simulationList,'UniformOutput',false); 
 for iPt=1:length(par.path_id)
     % get corresponding simulation
     tmp=regexp(par.path_id{iPt},'\|','split');
-    par.simIndex(iPt)=find(ismember(simulationNames, tmp{1}));
-    
+    par.simIndex(iPt)=find(ismember(strrep(simulationList,'.xml',''),tmp{1}));
+        
     % initialize rowindices for fast processing
     par.rowIndex(iPt)=nan;
     
