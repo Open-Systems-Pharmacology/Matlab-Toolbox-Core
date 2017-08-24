@@ -59,6 +59,7 @@ else
     elseif strcmp(path_id,'*')
         indx=1:nPar;
     else
+        % search for string before the first wildcard
        if ij_wildcards(1)>1
            [indx,paths]=findIndxForKeyStart(path_id(1:ij_wildcards(1)-1),TableArray.Variables(jCol).Values);
        else
@@ -66,6 +67,7 @@ else
            paths=TableArray.Variables(jCol).Values;
        end
         
+        % search for string between 2 wildcard
        if ~isempty(paths)
            for iWildcard=1:length(ij_wildcards)-1
                key=path_id(ij_wildcards(iWildcard)+1:ij_wildcards(iWildcard+1)-1);
@@ -73,6 +75,7 @@ else
            end
        end
        
+        % search for string after the last wildcard
        if ~isempty(paths)
            if ij_wildcards(end)<length(path_id)
                key=path_id(ij_wildcards(end)+1:end);
@@ -84,62 +87,45 @@ end
 
 return
 
-function [indx_new,paths_new]=findIndxForKeyInBetween(indx,key,paths)
+function [indx,paths]=findIndxForKeyInBetween(indx,key,paths)
 
-if size(indx,2)>1
-   indx=reshape(indx,1,length(indx));
-end
 
-paths_new=repmat({''},length(paths),1);
-indx_new=[];
-indx=reshape(indx,1,length(indx));
-for i=indx
-    ij=strfind(paths{i},key);
-    if ~isempty(ij)
-        paths_new{i}=paths{i}(ij(1)+length(key):end);
-        indx_new(end+1)=i;
-    end
-end
+firstOccurence = strfind(paths,key);
+jj = ~cellfun(@isempty,firstOccurence);
+paths = paths(jj);
+firstOccurence = firstOccurence(jj);
+indx = indx(jj);
 
-if isempty(indx_new)
-    paths_new={};
+for iP = 1:length(paths)
+    paths{iP} = paths{iP}(firstOccurence{iP}(1)+length(key):end);
 end
 
 return
 
-function [indx_new]=findIndxForKeyEnd(indx,key,paths)
+function [indx]=findIndxForKeyEnd(indx,key,paths)
 
-if size(indx,1)>1
-   indx=reshape(indx,1,length(indx));
-end
-
-indx_new=[];
-key_r=strrep(key,'|','\|');
-key_r=strrep(key_r,'(','\(');
-jj=~cellfun(@isempty,regexpi(paths(indx),[key_r '$']));
-for i=indx(jj)
-    if strcmp(key,paths{i}(end-length(key)+1:end))
-        indx_new(end+1)=i;
-    end
-end
+jj = ~cellfun(@isempty,strfind(paths,key));
+paths = paths(jj);
+indx = indx(jj);
+jj = cellfun(@(x) strcmp(x((end-length(key)+1):end),key),paths);
+indx = indx(jj);
 
 return
            
 
 
-function [indx_new,paths_new]=findIndxForKeyStart(key,paths)
+function [indx,paths]=findIndxForKeyStart(key,paths)
 
 
-paths_new=repmat({''},length(paths),1);
-indx_new=find(strncmp(key,paths,length(key)));
+jj = strncmp(key,paths,length(key));
 
-if isempty(indx_new)
-    paths_new={};
-else
-    for i=indx_new'
-        paths_new{i}=paths{i}(length(key)+1:end);
-    end
+paths = paths(jj);
+indx = find(jj);
+
+for iP = 1:length(paths)
+    paths{iP} = paths{iP}(length(key):end);
 end
+
 return
            
 
