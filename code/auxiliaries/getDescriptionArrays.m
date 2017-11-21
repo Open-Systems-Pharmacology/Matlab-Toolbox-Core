@@ -10,7 +10,7 @@ function [descParameter,descSpeciesInitialValues]=getDescriptionArrays(simulatio
 %           withSolverParameter (boolean) = if true solver Parameter are included
 %                           (default=false)
 %
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 3-Nov-2011
 
 if ~exist('withSolverParameter','var')

@@ -5,7 +5,7 @@ function license=getLicenseStructure
 %           license (struct)  
 %               .isExternal= (default) true;
 % 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 7-Nov-2011
 
 license.isExternal=true;

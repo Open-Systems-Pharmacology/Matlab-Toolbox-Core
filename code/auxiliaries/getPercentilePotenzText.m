@@ -11,7 +11,7 @@ function txt=getPercentilePotenzText(value)
 % txt=getPercentilePotenzText(3) -> txt = '3^{rd}'
 % txt=getPercentilePotenzText(4) -> txt = '4^{th}'
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 30-Aug-2011%%
 %%
 

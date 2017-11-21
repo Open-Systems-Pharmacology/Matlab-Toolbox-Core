@@ -8,7 +8,7 @@ function S=readXMLStructure(xmlfile)
 %                           the xml file
 %
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 10-Mai-2016
 
 fid = fopen(xmlfile);

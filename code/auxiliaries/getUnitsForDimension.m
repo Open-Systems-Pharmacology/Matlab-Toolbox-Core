@@ -9,7 +9,7 @@ function units=getUnitsForDimension(dimension)
 % Example Call:
 % units=getUnitsForDimension('time')
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 20-Dec-2010
 
 [unitList,unitList_dimensionList]=iniUnitList(0);

@@ -24,7 +24,7 @@ function  writetab(fname, data, delim, numformat, writetypes, writenames,display
 %                  0 - no progress.
 %                  2 - progress bar (default).
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com 
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
 % Datum: 2001-05-30
 
 if nargin < 2

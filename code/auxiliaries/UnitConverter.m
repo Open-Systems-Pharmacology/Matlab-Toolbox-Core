@@ -1,7 +1,7 @@
 function varargout = UnitConverter(varargin)
 % UNITCONVERTER a GUI suited to add new units to the MoBi Toolboxes
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 20-Dec-2010
 
 % UNITCONVERTER MATLAB code for UnitConverter.fig

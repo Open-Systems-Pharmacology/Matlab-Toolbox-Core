@@ -4,7 +4,7 @@ function parameterStatus=storeParameterStatus(simulationIndex,varargin)
 %
 % see also GETPARAMETERSTATUS
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 15-Nov-2012
 
 if isempty(varargin)

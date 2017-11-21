@@ -62,7 +62,7 @@ function initSimulation(XML,variableParameters,varargin)
 % 
 % see also INITPARAMETER, INITSPECIESINITIALVALUE
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 16-Sep-2010
 
 

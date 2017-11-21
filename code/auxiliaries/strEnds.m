@@ -9,7 +9,7 @@ function success_index=strEnds(c,s)
 % Example Calls:
 % success_index=strEnds({'Hallo world'},'ld')
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 6-Jun-2011%%
 %%
 

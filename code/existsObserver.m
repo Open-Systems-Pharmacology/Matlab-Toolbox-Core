@@ -27,7 +27,7 @@ function [isExisting,description,rowIndex] = existsObserver(path_id,simulationIn
 %
 % see also INITSIMULATION
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 27-Dec-2010
 
 global DCI_INFO;

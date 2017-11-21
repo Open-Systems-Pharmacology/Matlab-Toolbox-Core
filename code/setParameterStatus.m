@@ -21,7 +21,7 @@ function setParameterStatus(parameterStatus,simulationIndex,setOptions)
 %
 % see also GETPARAMETERSTATUS, INITSIMULATION
 %
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 23-Sep-2010
 
 %% check Inputs --------------------------------------------------------------

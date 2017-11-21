@@ -16,7 +16,7 @@ function [indx] = findTableIndex(path_id, iTab, simulationIndex, isReference)
 %           - false: (default) DCI_INFO{simulationIndex}. InputTab is searched
 %           - true: DCI_INFO{simulationIndex}.ReferenceTab is searched
  
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 19-Sep-2010
 
 global DCI_INFO;

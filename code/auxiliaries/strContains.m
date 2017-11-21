@@ -9,7 +9,7 @@ function success_index=strContains(c,expr)
 % Example Calls:
 % success_index=strContains({'Hallo world'},'or')
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 6-Jun-2011%%
 %%
 

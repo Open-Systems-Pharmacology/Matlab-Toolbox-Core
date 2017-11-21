@@ -38,7 +38,7 @@ function [isExisting,description,rowIndex] = existsSpeciesInitialValue(path_id,s
 %
 % see also INITSIMULATION
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 20-Sep-2010
 
 

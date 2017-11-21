@@ -8,7 +8,7 @@ function [dimensionList,unitTranslationList]=getDimensions
 % Example Call:
 % dimensionList=getDimensions
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 15-May-2011
 
 [unitList,unitList_dimensionList,unitTranslationList]=iniUnitList(0);

@@ -17,7 +17,7 @@ function [time,unit,pattern]=getSimulationTime(simulationIndex)
 %
 % see also INITSIMULATION
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 29-Sep-2010
 
 %% check Inputs --------------------------------------------------------------

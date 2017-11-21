@@ -14,7 +14,7 @@ function writeToLog(logText,logFile,doDisplayText,isNewFile)
 % writeToLog('Start Code:','log.txt',false,true)
 % writeToLog('End Code:','log.txt')
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 26-Nov-2010%%
 %%
 

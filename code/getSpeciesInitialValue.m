@@ -58,7 +58,7 @@ function [value,rowIndex] = getSpeciesInitialValue(path_id,simulationIndex,varar
 %
 % see also INITSIMULATION
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 22-Sep-2010
 
 global DCI_INFO;

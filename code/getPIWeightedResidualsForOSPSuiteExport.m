@@ -15,7 +15,7 @@ function [resid,PI]=getPIWeightedResidualsForOSPSuiteExport(p,PI)
 %       resid (double vector) - vector of all weighted residuals
 %       
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 10-Mai-2016
 
 % set current values

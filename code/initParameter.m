@@ -36,7 +36,7 @@ function initStruct=initParameter(initStruct, path_id, initializeIfFormula,varar
 %
 %   see also INITSIMULATION, INITSPECIESINITIALVALUE
  
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 18-Sep-2010
 % Update: 20-Jun_2012 Option throwWarningIfNotExisting
 

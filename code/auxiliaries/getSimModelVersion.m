@@ -15,7 +15,7 @@ function [simModelVersion, simModelCompVersion] = getSimModelVersion(simulationI
 % 	[simModelVersion, simModelCompVersion] = getSimModelVersion(1);
 %
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 01-Feb-2012
 	
 global MOBI_SETTINGS;

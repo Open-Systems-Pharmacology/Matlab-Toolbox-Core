@@ -6,7 +6,7 @@ function [descSpeciesInitialValues,descObserver]=getOutputDescriptionArrays(simu
 %           descSpeciesInitialValues (cell array) = initial value description
 %           descObserver (cell array)  =observer description
 % 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 3-Nov-2011
 
 [~,descObserver_tmp]=existsObserver('*',simulationIndex);

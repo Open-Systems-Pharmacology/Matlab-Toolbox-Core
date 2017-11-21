@@ -12,7 +12,7 @@ function PI=initParameterIdentificationForOSPSuiteExport(PI_xml,simulationList)
 %    .output (structure) settings for simulation outputs and corresponding observed data
 %    .configuration (structure) settings for configuration settings
 
-% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 
 % read xml file
 PI_struct=readXMLStructure(PI_xml);

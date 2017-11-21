@@ -44,7 +44,7 @@ function [ID, Time, Value, RestartSolver] = getTableParameter(path_id,simulation
 %
 % see also INITSIMULATION, SETTABLEPARAMETER
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 15-Nov-2012
 
 global DCI_INFO;

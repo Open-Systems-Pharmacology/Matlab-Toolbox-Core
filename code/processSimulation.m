@@ -21,7 +21,7 @@ function success=processSimulation(simulationIndex)
 % success=processSimulation('*');
 %
 % see also INITSIMULATION
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 24-Sep-2010
 
 global DCI_INFO;

@@ -8,7 +8,7 @@ function [helpFile]=getHelpFile(toolbox,filename,tab)
 %   - helpFile (string) : path of the helpfile corresponding to the calling gui
 %   - helpRBG (array) : Image for button
  
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 21-Dez-2010
 
 

@@ -7,7 +7,7 @@ function [isCanceled, individuals] = PKSimCreatePopulation(populationSettings)
 %        demographics
 %        create default settings by the function  DefaultPopulationSettings   
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com 
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
 % Date: 12-jan-2017
 
 individuals=[];

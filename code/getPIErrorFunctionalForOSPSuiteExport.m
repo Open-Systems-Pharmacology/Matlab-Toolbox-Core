@@ -16,7 +16,7 @@ function err=getPIErrorFunctionalForOSPSuiteExport(p,PI)
 %                               GETPIWEIGHTEDRESIDUALSFOROSPSUITEEXPORT)
 %       
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 10-Mai-2016
 
 

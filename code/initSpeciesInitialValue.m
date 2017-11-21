@@ -29,7 +29,7 @@ function initStruct=initSpeciesInitialValue(initStruct, path_id, initializeIfFor
 %
 %   see also INITSIMULATION, INITPARAMETER
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 18-Sep-2010
 % Update: 20-Jun_2012 Option throwWarningIfNotExisting
 

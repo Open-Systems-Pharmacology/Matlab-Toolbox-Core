@@ -16,7 +16,7 @@ function factor=getUnitFactor(unit_source,unit_target,dimension,varargin)
 % Example Call:
 % factor=getUnitFactor('µmol/l','mg/l','Concentration','MW',400);
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 20-Dec-2010
 
 [unitList,unitList_dimensionList]=iniUnitList(0);

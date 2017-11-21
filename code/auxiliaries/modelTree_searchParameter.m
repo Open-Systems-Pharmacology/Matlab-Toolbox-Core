@@ -8,7 +8,7 @@ function modelTree_searchParameter(hmenu, ~, node)
 %       node: com.mathworks.hg.peer.UITreeNode
 %       
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 21-Jun-2011
 
 modelInfo=modelTree_getModelInfo(node,hmenu);
