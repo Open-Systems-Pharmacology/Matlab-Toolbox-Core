@@ -9,7 +9,7 @@ function MoBi(mode)
 % MoBi(mode), where mode is empty or 1 to call command line help or 2 for
 % calling the window help with the function list.
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 24-Nov-2010
 
 if nargin==0

@@ -9,7 +9,7 @@ function resetExcelSheet(xlsfile,sheet)
 % resetExcelSheet('test.xlsx','Table1')
 % resetExcelSheet('test.xls',1)
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 6-Dec-2011
 
 

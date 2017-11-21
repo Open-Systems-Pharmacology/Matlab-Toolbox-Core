@@ -5,7 +5,7 @@ function populationSettings = DefaultPopulationSettings
 %
 %       is used in function PKSimCreatePopulation   
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com 
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
 % Date: 12-jan-2017
 
     populationSettings=[];

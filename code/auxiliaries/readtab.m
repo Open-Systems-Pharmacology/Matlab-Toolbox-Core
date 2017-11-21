@@ -54,7 +54,7 @@ function data = readtab(fname, delim, numformat, readtypes, readnames, display)
 %       data{3,4} = [1.3; NaN; 3.3; 4.3]
 %       data{3,5} = {'abcdefg'; 'hij'; '1.2345'; 'klmno'}
 %
-% Open Systems Pharmacology Suite;  support@systems-biology.com 
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
 %   Datum: 2000-05-23
 
 %#function wbinterface

@@ -67,7 +67,7 @@ function msg=ps2pdf_MoBi(psfile,pdffile,varargin)
 %            'gsfontpath', 'C:\Program Files\GhostScript\fonts', ...
 %            'gslibpath', 'C:\Program Files\GhostScript\lib')
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com 
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
 % Date: 24-Jun-2011
 
 % set warning off

@@ -18,7 +18,7 @@ function valid=guiCheckNumerical(hObject,isMandatory,minValue,maxValue,isInteger
 %
 % Example Call: valid=guiCheckNumerical(hObject)
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 4-Nov-2010
 
 if ~exist('isMandatory','var')

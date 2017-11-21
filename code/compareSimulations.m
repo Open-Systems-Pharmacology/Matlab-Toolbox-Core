@@ -31,7 +31,7 @@ function compareSimulations(fileName1,fileName2,varargin)
 % compareSimulations('SimModel4_ExampleInput05.xml','SimModel4_ExampleInput06.xml');
 % compareSimulations('SimModel4_ExampleInput05.xml','SimModel4_ExampleInput06.xml','resolution',0.1,'logfile','log.txt');
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 26-Nov-2010
 
 %% Check input options

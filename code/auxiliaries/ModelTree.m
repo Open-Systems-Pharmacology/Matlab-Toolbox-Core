@@ -2,7 +2,7 @@ classdef ModelTree
 %MODELTREE Treeview to display the model parameters hierarchically
 %
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 28-Sept-2011
 
    properties

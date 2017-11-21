@@ -12,7 +12,7 @@ function plotPIDefaultOutputForOSPSuiteExport(PI,finalValues)
 %      finalValues (double vector) - values identified by algorithm for the
 %                               problem defiend in PI
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 10-Mai-2016
 
 

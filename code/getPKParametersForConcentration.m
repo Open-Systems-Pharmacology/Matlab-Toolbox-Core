@@ -140,7 +140,7 @@ function PK=getPKParametersForConcentration(time,concentration,varargin)
 %
 % see also GETPKPARAMETERS
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 25-Sep-2010
 
 %% check Inputs --------------------------------------------------------------

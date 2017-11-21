@@ -60,7 +60,7 @@ function [ax_handles,figure_handle]=getNormFigure(nRows,nCols,figure_handle,vara
 %
 %   see also EXAMPLE_FORMAT
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 16-Dez-2010
 
 %% check Inputs --------------------------------------------------------------

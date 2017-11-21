@@ -31,7 +31,7 @@ function varargout = checkInputOptions(givenOption,possibleOption)
 %     'ExecutionTimeLimit','<$ %g>0 $>',0,...
 %     });
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 16-Sep-2010
 
 

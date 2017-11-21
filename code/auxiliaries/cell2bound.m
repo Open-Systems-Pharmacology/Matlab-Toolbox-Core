@@ -7,7 +7,7 @@ function [bounds, numintervals] = cell2bound(C)
 %                  of the input variables incl. min und max value
 %       - numintervals : vector of the length numVar with the number of the intervals of the variables
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 2000-01-19
 
 nvars = length(C);

@@ -41,7 +41,7 @@ function [sim_time,sim_values,rowIndex,path_id_list]=getSimulationResult(path_id
 %
 % see also INITSIMULATION
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 22-Sep-2010
 
 

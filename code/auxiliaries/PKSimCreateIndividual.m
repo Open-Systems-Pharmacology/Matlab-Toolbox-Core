@@ -32,7 +32,7 @@ function [isCanceled,individualParameters] = PKSimCreateIndividual(species, popu
 %                relevant for preterm, default 40)
 
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 16-jan-2012
 
 %% check inputs

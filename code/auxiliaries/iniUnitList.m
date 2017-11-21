@@ -27,7 +27,7 @@ function [unitList,unitList_dimensionList,unitTranslationList]=iniUnitList(Flag,
 % Example Call:
 % [unitList,unitList_dimensionList]=iniUnitList(true)
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 30-Nov-2011
 global MOBI_SETTINGS;
 

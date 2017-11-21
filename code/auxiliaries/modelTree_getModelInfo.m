@@ -9,7 +9,7 @@ function  [modelInfo,handles,tree]=modelTree_getModelInfo(node,hmenu)
 %       tree: javatree
 %
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 28-Sept-2011
 
 rootNode=node.getRoot();

@@ -156,7 +156,7 @@ function PK=getPKParameters(path_id,simulationIndex,varargin)
 %
 % see also INITSIMULATION, GETPKPARAMETERSFORCONCENTRATION
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 24-Sep-2010
 
 %%

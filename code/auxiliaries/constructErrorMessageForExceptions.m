@@ -6,7 +6,7 @@ function constructErrorMessageForExceptions(exception,errorDir)
 %       errorDir (string) directory where the exception is saved. If not
 %       given or empty exception is not saved.
  
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 19-Aug-2011
 
 % getError Message

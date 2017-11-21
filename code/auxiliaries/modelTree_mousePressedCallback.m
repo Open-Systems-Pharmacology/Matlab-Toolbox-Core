@@ -9,7 +9,7 @@ function modelTree_mousePressedCallback(~, eventData, jmenu,functionList,isVisib
 %       tree: javatree
 %
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
 % Date: 28-Sept-2011
 
 if eventData.isMetaDown % right-click is like a Meta-button
