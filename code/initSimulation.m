@@ -62,7 +62,7 @@ function initSimulation(XML,variableParameters,varargin)
 % 
 % see also INITPARAMETER, INITSPECIESINITIALVALUE
 
-% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
+% Open Systems Pharmacology Suite;  support@systems-biology.com
 % Date: 16-Sep-2010
 
 
@@ -147,6 +147,10 @@ if ~addFile && isnan(addFileAtIndex)
     simulationIndex=1;
 elseif addFile
     simulationIndex=length(DCI_INFO)+1;
+elseif ~isnan(addFileAtIndex) && addFileAtIndex <= length(DCI_INFO) && ~isempty(DCI_INFO{addFileAtIndex})
+     simulationIndex=addFileAtIndex;
+     feval(MOBI_SETTINGS.MatlabInterface, 'DestroyComponent', DCI_INFO{simulationIndex}.Handle);
+     DCI_INFO{simulationIndex} = [];
 else
     simulationIndex=addFileAtIndex;
 end

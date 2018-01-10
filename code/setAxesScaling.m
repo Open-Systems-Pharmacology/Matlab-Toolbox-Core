@@ -39,7 +39,7 @@ function setAxesScaling(axes_handle,varargin)
 %
 %   see also EXAMPLE_FORMAT
 
-% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
+% Open Systems Pharmacology Suite;  support@systems-biology.com
 % Date: 24-Dez-2010
 
 %% check Inputs --------------------------------------------------------------
@@ -86,7 +86,7 @@ elseif xlim(1)==0 && strcmp(xscale,'log')
 end
 set(axes_handle,'xlim',xlim);
 if isnan(ylim)
-    ylim=get(axes_handle,'ylim');
+    ylim(1:2)=get(axes_handle,'ylim');
 elseif ylim(1)==0 && strcmp(yscale,'log')
      warning('MoBiToolbox:Basis:setAxesScaling:AxesLog',...
         'The limit 0 cannot be used for logarithmic y-scale.');
