@@ -39,7 +39,7 @@ function setAxesScaling(axes_handle,varargin)
 %
 %   see also EXAMPLE_FORMAT
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
 % Date: 24-Dez-2010
 
 %% check Inputs --------------------------------------------------------------

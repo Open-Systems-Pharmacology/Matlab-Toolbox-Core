@@ -8,7 +8,7 @@
 %       simModelCompConfigPath (string, optional): full file name of SimModelComp configuration file
 %       eventsAssemblyPath (string, optional):     path to .NET assembly intended for providing "events" if called from .NET application
 
-% Open Systems Pharmacology Suite;  support@systems-biology.com 
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org  
 % Date: 20-May-2011
 
 % SimModel Schema
@@ -23,7 +23,7 @@ if ~isdeployed && ~isunix
     
     systemPath = getenv('path');
     
-    if isempty(strfind(systemPath,libpath))
+    if isempty(strfind(systemPath,libpath)) %#ok<STREMP> 
         setenv('path', [libpath ';' systemPath]);
     end
 
