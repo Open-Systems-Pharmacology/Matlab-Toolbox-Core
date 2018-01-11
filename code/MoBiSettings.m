@@ -8,7 +8,7 @@
 %       simModelCompConfigPath (string, optional): full file name of SimModelComp configuration file
 %       eventsAssemblyPath (string, optional):     path to .NET assembly intended for providing "events" if called from .NET application
 
-% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
+% Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org  
 % Date: 20-May-2011
 
 % SimModel Schema
@@ -23,7 +23,7 @@ if ~isdeployed && ~isunix
     
     systemPath = getenv('path');
     
-    if isempty(strfind(systemPath,libpath))
+    if isempty(strfind(systemPath,libpath)) %#ok<STREMP> 
         setenv('path', [libpath ';' systemPath]);
     end
 
@@ -57,8 +57,21 @@ else
 end
 MOBI_SETTINGS.SimModelComp = SimModelComp;
 
-MOBI_SETTINGS.MatlabInterface = ['DCIMatlabR2013b6_0',sCopy];
-
+% check for 32 or 64 bit computer
+c = computer('arch');
+switch c
+    case {'win32','glnx86'}
+        MOBI_SETTINGS.MatlabInterface = ['DCIMatlabR2013b6_1',sCopy];
+    case {'win64','glnxa64','maci64'}
+        MOBI_SETTINGS.MatlabInterface = ['DCIMatlabR2017b6_1',sCopy];
+    otherwise
+        error('unknown type of computer');
+end
+if ~exist(MOBI_SETTINGS.MatlabInterface,'file')
+    error(['It was not possible to find the matlab interface %s. Please check if it is installed.'...
+        ' If you have another version of the matlab interface installed, it may be you are working with the wrong matlab version.'...
+        ' Use a 32bit platform for DCIMatlabR2013b6_1 and  a 64bit platform for DCIMatlabR2017b6_1'],MOBI_SETTINGS.MatlabInterface);
+end
 warning('off','MATLAB:mex:deprecatedExtension');
 
 
