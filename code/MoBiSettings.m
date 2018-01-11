@@ -61,7 +61,7 @@ MOBI_SETTINGS.SimModelComp = SimModelComp;
 c = computer('arch');
 switch c
     case {'win32','glnx86'}
-        MOBI_SETTINGS.MatlabInterface = ['DCIMatlabR2013b6_1.dll',sCopy];
+        MOBI_SETTINGS.MatlabInterface = ['DCIMatlabR2013b6_1',sCopy];
     case {'win64','glnxa64','maci64'}
         MOBI_SETTINGS.MatlabInterface = ['DCIMatlabR2017b6_1',sCopy];
     otherwise
