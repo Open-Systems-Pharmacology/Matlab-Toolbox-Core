@@ -182,46 +182,37 @@ if isempty(MOBI_SETTINGS)
     MoBiSettings;
 end
 
-if isfield(MOBI_SETTINGS,'gsSettings')
+if isfield(MOBI_SETTINGS,'gsSettings') 
     gsSettings=MOBI_SETTINGS.gsSettings;
 else
-    application_path=MOBI_SETTINGS.application_path;
+    % get environment
     
-    if ~exist(application_path,'dir')
-        mkdir(application_path);
-    end
-    gsSettings_file=[application_path 'gsSettings.mat'];
-    if ~exist(gsSettings_file,'file')
-        % get environment
-        ProgramFiles=getenv('ProgramFiles');
+    [~,pathToPKSimInstallDir]=getPathToPKSimInstallDir(OSPSuiteVersion);
+    MikTexDir = dir(fullfile(pathToPKSimInstallDir,'/..','Mik*'));
+    MikTexDir = MikTexDir.name;
+
+    % ghostview path
+    gsSettings.gscommand = fullfile(pathToPKSimInstallDir,'/..',MikTexDir,'miktex','bin','mgs.exe');
+    gsSettings.gsfontpath = fullfile(pathToPKSimInstallDir,'/..',MikTexDir,'fonts');
+    gsSettings.gslibpath = fullfile(pathToPKSimInstallDir,'/..',MikTexDir,'miktex','bin');
+%     if exist(fullfile(ProgramFiles, 'GhostScript', 'bin', 'gswin32c.exe'),'file')
+%         gsSettings.gscommand=fullfile(ProgramFiles, 'GhostScript', 'bin', 'gswin32c.exe');
+%         if exist(fullfile(ProgramFiles, 'GhostScript','fonts'),'dir')
+%             gsSettings.gsfontpath=fullfile(ProgramFiles, 'GhostScript','fonts');
+%         end
+%         if exist(fullfile(ProgramFiles, 'GhostScript','lib'),'dir')
+%             gsSettings.gslibpath=fullfile(ProgramFiles, 'GhostScript','lib');
+%         end
+%     elseif exist(fullfile(ProgramFiles, 'gs','gs9.00','bin', 'gswin32c.exe'),'file')
+%         gsSettings.gscommand=fullfile(ProgramFiles, 'gs','gs9.00','bin', 'gswin32c.exe');
+%         if exist(fullfile(ProgramFiles, 'gs','gs9.00','fonts'),'dir')
+%             gsSettings.gsfontpath=fullfile(ProgramFiles, 'gs','gs9.00','fonts');
+%         end
+%         if exist(fullfile(ProgramFiles, 'gs','gs9.00','lib'),'dir')
+%             gsSettings.gslibpath=fullfile(ProgramFiles, 'gs','gs9.00','lib');
+%         end
+%     end
         
-        % ghostview path
-        gsSettings.gscommand='';
-        gsSettings.gsfontpath='';
-        gsSettings.gslibpath='';
-        if exist(fullfile(ProgramFiles, 'GhostScript', 'bin', 'gswin32c.exe'),'file')
-            gsSettings.gscommand=fullfile(ProgramFiles, 'GhostScript', 'bin', 'gswin32c.exe');
-            if exist(fullfile(ProgramFiles, 'GhostScript','fonts'),'dir')
-                gsSettings.gsfontpath=fullfile(ProgramFiles, 'GhostScript','fonts');
-            end
-            if exist(fullfile(ProgramFiles, 'GhostScript','lib'),'dir')
-                gsSettings.gslibpath=fullfile(ProgramFiles, 'GhostScript','lib');
-            end
-        elseif exist(fullfile(ProgramFiles, 'gs','gs9.00','bin', 'gswin32c.exe'),'file')
-            gsSettings.gscommand=fullfile(ProgramFiles, 'gs','gs9.00','bin', 'gswin32c.exe');
-            if exist(fullfile(ProgramFiles, 'gs','gs9.00','fonts'),'dir')
-                gsSettings.gsfontpath=fullfile(ProgramFiles, 'gs','gs9.00','fonts');
-            end
-            if exist(fullfile(ProgramFiles, 'gs','gs9.00','lib'),'dir')
-                gsSettings.gslibpath=fullfile(ProgramFiles, 'gs','gs9.00','lib');
-            end
-        end
-        
-        save(gsSettings_file,'gsSettings');
-        
-    else
-        load(gsSettings_file);
-    end
 
     MOBI_SETTINGS.gsSettings=gsSettings;
 end

@@ -33,7 +33,7 @@ function [isCanceled,individualParameters] = PKSimCreateIndividual(species, popu
 
 
 % Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
-% Date: 16-jan-2012
+% Date: 30-apr-2018
 
 %% check inputs
 if ~exist('useDistribution','var')
@@ -41,7 +41,7 @@ if ~exist('useDistribution','var')
 end
 
 % species
-speciesList={'Beagle','Dog','Human','Minipig','Monkey','Mouse','Rat'};
+speciesList={'Beagle','Dog','Human','Minipig','Monkey','Mouse','Rat','Rabbit'};
 jj=strcmpi(speciesList,species);
 if ~any(jj)
     error('unknown species %s',species);
@@ -51,7 +51,7 @@ end
 
 % Population
 population_list={'European_ICRP_2002','WhiteAmerican_NHANES_1997','BlackAmerican_NHANES_1997',...
-    'MexicanAmericanWhite_NHANES_1997','Asian_Tanaka_1996','Preterm','Japanese_Population'};
+    'MexicanAmericanWhite_NHANES_1997','Asian_Tanaka_1996','Preterm','Japanese_Population','Pregnant'};
 if strcmp(species,'Human');
     if isempty(population)
         population=population_list{1};
@@ -155,15 +155,19 @@ try
     end
 
     %---- create origin data
-    originData=PKSim.Core.Batch.OriginData;
-    originData.Species=species;
-    originData.Population=population;
-    originData.Gender=gender;
-    originData.Age=age;
-    originData.GestationalAge=gestational_age;
-    originData.Weight=weight;
-    originData.Height=height;
-    originData.AddCalculationMethod('SurfaceAreaPlsInt',endothelialSurfaceAreaCalculationMethod);
+    originData                = PKSim.Core.Snapshots.OriginData;
+    originData.Species        = species;
+    originData.Population     = population;
+    originData.Gender         = gender;
+    originData.Age            = parameterFrom(age, 'year(s)');
+    originData.GestationalAge = parameterFrom(gestational_age, 'week(s)');
+    originData.Weight         = parameterFrom(weight, 'kg');
+    originData.Height         = parameterFrom(height, 'dm');
+    
+    calculationMethods        = NET.createArray('System.String', 1);
+    calculationMethods(1)     = endothelialSurfaceAreaCalculationMethod;
+    AddCalculationMethods(originData, calculationMethods);
+    %originData.AddCalculationMethod('SurfaceAreaPlsInt',endothelialSurfaceAreaCalculationMethod);
     
     %---- create NET array with required ontogenies
     if ~isempty(onto_path)
@@ -218,5 +222,7 @@ catch e
     end
 end
 
-
-
+function parameter = parameterFrom(value, unit)
+    parameter = PKSim.Core.Snapshots.Parameter;
+    parameter.Value = value;
+    parameter.Unit = unit;
