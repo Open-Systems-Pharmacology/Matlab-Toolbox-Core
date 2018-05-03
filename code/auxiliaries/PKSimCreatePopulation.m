@@ -8,7 +8,7 @@ function [isCanceled, individuals] = PKSimCreatePopulation(populationSettings)
 %        create default settings by the function  DefaultPopulationSettings   
 
 % Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
-% Date: 12-jan-2017
+% Date: 30-apr-2018
 
 individuals=[];
 
@@ -25,7 +25,8 @@ try
     ontogenies = NET.createArray('System.String', 0);
     
     %---- create new population
-    result=PopulationFactory.CreatePopulation(populationSettings, ontogenies);
+    PKSimPopulationSettings = pksimPopulationSettingsFrom(populationSettings);
+    result=PopulationFactory.CreatePopulation(PKSimPopulationSettings, ontogenies);
     
     %check no of individuals
     if result.Count ~= populationSettings.NumberOfIndividuals
@@ -59,9 +60,43 @@ try
 catch e
     if(isa(e, 'NET.NetException'))
         eObj = e.ExceptionObject;
-        %    disp(eObj.ToString);
         error(char(eObj.ToString));
     else
         rethrow(e);
     end
 end
+
+function PKSimPopulationSettings = pksimPopulationSettingsFrom(populationSettings)
+    PKSimPopulationSettings = PKSim.Core.Snapshots.PopulationSettings;
+    
+    PKSimPopulationSettings.NumberOfIndividuals = populationSettings.NumberOfIndividuals;
+    PKSimPopulationSettings.ProportionOfFemales = populationSettings.ProportionOfFemales;
+    
+    PKSimPopulationSettings.Age = parameterRangeFrom(populationSettings.MinAge, populationSettings.MaxAge, populationSettings.AgeUnit);
+    PKSimPopulationSettings.Weight = parameterRangeFrom(populationSettings.MinWeight, populationSettings.MaxWeight, populationSettings.WeightUnit);
+    PKSimPopulationSettings.Height = parameterRangeFrom(populationSettings.MinHeight, populationSettings.MaxHeight, populationSettings.HeightUnit);
+    PKSimPopulationSettings.GestationalAge = parameterRangeFrom(populationSettings.MinGestationalAge, populationSettings.MaxGestationalAge, populationSettings.GestationalAgeUnit);
+    PKSimPopulationSettings.BMI = parameterRangeFrom(populationSettings.MinBMI, populationSettings.MaxBMI, populationSettings.BMIUnit);
+
+    originData = PKSim.Core.Snapshots.OriginData;
+    originData.Species    = populationSettings.Species;
+    originData.Population = populationSettings.Population;
+    calculationMethods = NET.createArray('System.String', 1);
+    calculationMethods(1)='SurfaceAreaPlsInt_VAR1';
+    AddCalculationMethods(originData, calculationMethods);
+
+    PKSimPopulationSettings.Individual = PKSim.Core.Snapshots.Individual;
+    PKSimPopulationSettings.Individual.OriginData = originData;
+ 
+function parameterRange = parameterRangeFrom(minValue, maxValue, unit)
+    parameterRange      = PKSim.Core.Snapshots.ParameterRange;
+
+    if ~isnan(minValue)
+        parameterRange.Min  = minValue;
+    end
+
+    if ~isnan(maxValue)
+        parameterRange.Max  = maxValue;
+    end
+    
+    parameterRange.Unit = unit;

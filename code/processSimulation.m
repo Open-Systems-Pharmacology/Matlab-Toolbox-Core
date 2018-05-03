@@ -48,7 +48,7 @@ success=true;
 for simulationIndex_i=simulationIndex
     if success
 		% set Input Tables
-        updateSimulationInputs(simulationIndex);
+        updateSimulationInputs(simulationIndex_i);
         try
             r = feval(MOBI_SETTINGS.MatlabInterface,'ProcessData', DCI_INFO{simulationIndex_i}.Handle);
             if r == 0
@@ -94,18 +94,18 @@ for simulationIndex_i=simulationIndex
                 % add rowindex ID Array for fast processing for simulation
                 % results
                if ~isfield(DCI_INFO{simulationIndex_i},'OutputTabID')
-                   for iCol=1:length(DCI_INFO{simulationIndex}.OutputTab(2).Variables)
+                   for iCol=1:length(DCI_INFO{simulationIndex_i}.OutputTab(2).Variables)
                        DCI_INFO{simulationIndex_i}.OutputTabID(iCol)=...
-                           str2double(DCI_INFO{simulationIndex}.OutputTab(2).Variables(iCol).Attributes(1).Value);
+                           str2double(DCI_INFO{simulationIndex_i}.OutputTab(2).Variables(iCol).Attributes(1).Value);
                    end
                end
 
                % add rowindex ID Array for fast processing for sensitivity
                if ~isfield(DCI_INFO{simulationIndex_i},'SensitivityTabID')
-                   for iCol=1:length(DCI_INFO{simulationIndex}.OutputTab(3).Variables)
+                   for iCol=1:length(DCI_INFO{simulationIndex_i}.OutputTab(3).Variables)
                        DCI_INFO{simulationIndex_i}.SensitivityTabID(iCol,:) = ...
-                           [str2double(DCI_INFO{simulationIndex}.OutputTab(3).Variables(iCol).Attributes(1).Value),...
-                           str2double(DCI_INFO{simulationIndex}.OutputTab(3).Variables(iCol).Attributes(5).Value)];
+                           [str2double(DCI_INFO{simulationIndex_i}.OutputTab(3).Variables(iCol).Attributes(1).Value),...
+                           str2double(DCI_INFO{simulationIndex_i}.OutputTab(3).Variables(iCol).Attributes(5).Value)];
                    end
                end
 
