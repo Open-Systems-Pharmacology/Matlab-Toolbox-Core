@@ -11,6 +11,7 @@ function isCanceled = loadPKSimMatlabDLL
     if isempty(which('PKSim.Matlab.MoleculeOntogeny'))
         NET.addAssembly([pathToPKSimInstallDir '\PKSim.Matlab.dll']);
         NET.addAssembly('System.Core');
+        %NET.addAssembly([pathToPKSimInstallDir '\Microsoft.Extensions.Logging.Abstractions.dll']);
         NET.addAssembly([pathToPKSimInstallDir '\PKSim.Core.dll']);
     end
     

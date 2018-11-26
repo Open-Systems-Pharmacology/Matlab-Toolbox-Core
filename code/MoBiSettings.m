@@ -4,12 +4,11 @@
 %   MOBISETTINGS  the default paths are used
 %
 %   MOBISETTINGS(simModelSchemaPath, simModelCompConfigPath, eventsAssemblyPath)
-%       simModelSchemaPath (string, optional): path to SimModel xml schema.
-%       simModelCompConfigPath (string, optional): full file name of SimModelComp configuration file
+%       simModelSchemaPath (string, optional): path to SimModel xml schema (OSPSuite.SimModel.xsd).
+%       simModelCompConfigPath (string, optional): path to SimModelComp configuration file (OSPSuite_SimModelComp.xml)
 %       eventsAssemblyPath (string, optional):     path to .NET assembly intended for providing "events" if called from .NET application
 
 % Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org  
-% Date: 20-May-2011
 
 % SimModel Schema
 global MOBI_SETTINGS;

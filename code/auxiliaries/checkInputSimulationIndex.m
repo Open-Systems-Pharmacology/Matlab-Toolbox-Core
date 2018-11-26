@@ -6,7 +6,6 @@ function checkInputSimulationIndex(simulationIndex)
 %       simulationIndex index of the simulation (see also INITSIMULATION option 'addFile')  
 
 % Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org
-% Date: 20-Sep-2010
 
 global DCI_INFO;
 
@@ -21,7 +20,7 @@ elseif simulationIndex==0
     end
 elseif isempty(DCI_INFO)
         error('MoBiToolbox:Basis:SimulationIndex',...
-            'SimulationIndex %d is not valid. There is none simulation initialized.',...
+            'SimulationIndex %d is not valid. There is no simulation initialized.',...
             simulationIndex);
 elseif length(DCI_INFO)<simulationIndex    
         error('MoBiToolbox:Basis:SimulationIndex',...
