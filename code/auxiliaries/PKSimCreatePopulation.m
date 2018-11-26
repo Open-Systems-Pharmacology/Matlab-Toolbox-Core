@@ -1,14 +1,14 @@
-function [isCanceled, individuals] = PKSimCreatePopulation(populationSettings)
+function [isCanceled, individuals] = PKSimCreatePopulation(populationSettings, xmlFile)
 %PKSIMCREATEPOPULATION Creates physiology parameters of a population
 %
 %   [isCanceled, individuals] = PKSimCreatePopulation(populationSettings)
 %
-%       populationSettings (structure) : description of population
-%        demographics
-%        create default settings by the function  DefaultPopulationSettings   
+%       populationSettings (structure) : description of population demographics
+%       (create default settings by the function DefaultPopulationSettings)
+%       xmlFile (string): path of the simulation file -> generate ontogeny information
+%           if xmlFile is empty, no ontogenies are generated
 
 % Open Systems Pharmacology Suite;  http://open-systems-pharmacology.org 
-% Date: 30-apr-2018
 
 individuals=[];
 
@@ -19,11 +19,36 @@ try
         return
     end
     
+    %Simulation file
+    if ~exist('xmlFile','var') || isempty(xmlFile) 
+        % take default method and no ontogenies
+        onto_path={};
+    else
+        initSimulation(xmlFile,'none','report','none');
+        % ontogeniesInfo
+        simulationIndex=1;
+        [ise,descr]=existsParameter('*Ontogeny factor GI',simulationIndex,'parameterType','readOnly');
+        if ise
+            jCol=strcmpi(descr(1,:),'Path');
+            onto_path=descr(2:end,jCol);
+        else
+            onto_path={};
+        end
+    end
+
     PopulationFactory=PKSim.Matlab.MatlabPopulationFactory;
-        
-    %Ontogenies
-    ontogenies = NET.createArray('System.String', 0);
     
+    ontogenies = NET.createArray('PKSim.Matlab.MoleculeOntogeny', length(onto_path));
+    for iO=1:length(onto_path)
+        jj_tmp = strfind(onto_path{iO},object_path_delimiter);
+        Molecule = onto_path{iO}(jj_tmp(end-1)+1:jj_tmp(end)-1);
+        
+        % at the moment, "Ontogeny like" is set = "Molecule". Later, this can be changed
+        ontogeny = PKSim.Matlab.MoleculeOntogeny(Molecule, Molecule);
+            
+        ontogenies(iO) = ontogeny;
+    end
+        
     %---- create new population
     PKSimPopulationSettings = pksimPopulationSettingsFrom(populationSettings);
     result=PopulationFactory.CreatePopulation(PKSimPopulationSettings, ontogenies);
