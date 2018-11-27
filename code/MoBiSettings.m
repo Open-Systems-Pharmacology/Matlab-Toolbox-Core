@@ -171,9 +171,23 @@ return
 
 function pathToMikTexInstallDir = getpathToMikTexInstallDirFromRegistry
 	
+    pathToMikTexInstallDir = '';
 	try
         pathToMikTexInstallDir = winqueryreg('HKEY_LOCAL_MACHINE',sprintf('SOFTWARE\\Open Systems Pharmacology\\MikTeX'), 'InstallDir');
+        return;
     catch
-        pathToMikTexInstallDir = '';
-	end
+    end
+    
+    %default registry key not found - try another one
+    try
+        pathToMikTexInstallDir = winqueryreg('HKEY_LOCAL_MACHINE',sprintf('SOFTWARE\\Wow6432Node\\Open Systems Pharmacology\\MikTex'), 'InstallDir');
+        return;
+    catch
+    end
+
+    % registry calls failed. Try default installation location
+    pathToMikTexInstallDir=[getenv('ProgramFiles(x86)') filesep 'Open Systems Pharmacology' filesep 'MikTex 2.9.3' filesep];
+    if ~exist(pathToMikTexInstallDir, 'dir')
+        pathToMikTexInstallDir='';
+    end
 return
