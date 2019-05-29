@@ -68,6 +68,10 @@ end
 
 factor=f_source/f_target;
 
+if ~isfinite(factor)
+    error('The formula %s for unit %s evaluates to a non-finite value (NaN, Inf, -Inf)',unitList(iDim).formula{iU_target},unit_target)
+end
+
 return
 
 
