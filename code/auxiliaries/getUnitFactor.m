@@ -30,9 +30,13 @@ end
 % set baseUnit if no unit is given
 if isempty(unit_source)
     unit_source=unitList(iDim).baseUnit;
+else
+    unit_source = adjustUnit(unit_source);
 end
 if isempty(unit_target)
     unit_target=unitList(iDim).baseUnit;
+else
+    unit_target = adjustUnit(unit_target);
 end
 
 
@@ -74,5 +78,22 @@ end
 
 return
 
+function adjustedUnit = adjustUnit(unit)
+
+try
+    adjustedUnit = char(unit);
+    
+    %if the unit was e.g. read from file using wrong encoding, invalid characters are replace with characted code 65533
+    %because in nearly 100% of cases invalid character is 'µ': Replace all occurances of char 65533 with 'µ'
+    %If original character was not 'µ': exception will happen in any case (with or without replacement)
+    adjustedUnit(double(adjustedUnit)==65533)='µ';
+
+    %if the unit was e.g. read from file which was saved using wrong encoding char(194) is added before/after some characters. just remove it
+    adjustedUnit = strrep(adjustedUnit,char(194),'');
+
+catch
+    %if something went wrong - return original unit
+    adjustedUnit = unit;
+end
 
 
